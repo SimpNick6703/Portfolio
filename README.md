@@ -14,7 +14,7 @@ A full-stack portfolio application built with FastAPI (backend) and React (front
 
 ### 🚀 Option 1: GitHub Pages (Recommended for Static Hosting)
 
-#### Automatic Deployment
+#### Option 1A: Deploy from Main Branch (Simplest)
 
 1. **Fork/Clone this repository to your GitHub account**
 2. **Update the username in the code**:
@@ -26,12 +26,19 @@ A full-stack portfolio application built with FastAPI (backend) and React (front
    ```json
    "homepage": "https://YourUsername.github.io/Portfolio"
    ```
-4. **Enable GitHub Pages in repository settings**:
+4. **Build and deploy**:
+   ```bash
+   # Run the deployment script
+   ./deploy-main-branch.sh    # Linux/Mac
+   # OR
+   deploy-main-branch.bat     # Windows
+   ```
+5. **Configure GitHub Pages**:
    - Go to Settings > Pages
-   - Source: GitHub Actions
-5. **Push to main branch** - GitHub Actions will automatically build and deploy
+   - Source: Deploy from a branch
+   - Branch: main, Folder: / (root)
 
-#### Manual Deployment
+#### Option 1B: Deploy using gh-pages branch
 
 ```bash
 cd frontend
@@ -39,6 +46,14 @@ npm install
 npm run build
 npm run deploy
 ```
+Then configure GitHub Pages to use the `gh-pages` branch.
+
+#### Option 1C: Automatic Deployment with GitHub Actions
+
+1. **Enable GitHub Pages**:
+   - Go to Settings > Pages
+   - Source: GitHub Actions
+2. **Push to main branch** - GitHub Actions will automatically build and deploy
 
 ### 🐳 Option 2: Docker (Full-Stack Development)
 

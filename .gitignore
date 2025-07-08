@@ -1,0 +1,63 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Production build (only ignore when not deploying from main branch)
+# Uncomment these lines if you're NOT deploying from main branch:
+# *.html
+# *.js
+# *.css
+# *.ico
+# *.png
+# *.svg
+# static/
+# asset-manifest.json
+# manifest.json
+# robots.txt
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Docker
+.dockerignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Coverage
+coverage/
+.coverage
+.coverage.*
+.cache
+htmlcov/
+
+# Testing
+.pytest_cache/

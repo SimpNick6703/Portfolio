@@ -29,7 +29,7 @@ const USERNAME = 'SimpNick6703'; // Replace with your actual GitHub username
 #### B. Update Homepage URL
 Edit `frontend/package.json`:
 ```json
-"homepage": "https://SimpNick6703.github.io/Portfolio"
+"homepage": "https://simpnick6703.github.io/Portfolio"
 ```
 
 #### C. Update About Page (Optional)
@@ -52,7 +52,42 @@ Visit http://localhost:3000 to test your portfolio locally.
 
 ### 5. Deploy to GitHub Pages
 
-#### Option A: Automatic Deployment (Recommended)
+#### Option A: Deploy from Main Branch (Recommended)
+
+1. **Configure GitHub Pages**:
+   - Go to your repository on GitHub
+   - Click on "Settings"
+   - Go to "Pages" in the left sidebar
+   - Under "Source", select "Deploy from a branch"
+   - Select "main" branch and "/ (root)" folder
+
+2. **Build and commit the built files**:
+   ```bash
+   cd frontend
+   npm run build
+   
+   # Copy built files to root for GitHub Pages
+   cp -r build/* ../
+   cd ..
+   
+   # Commit the built files
+   git add .
+   git commit -m "Deploy portfolio to GitHub Pages"
+   git push origin main
+   ```
+
+3. **Wait for deployment**: GitHub will automatically serve your site from the main branch.
+
+#### Option B: Deploy using gh-pages branch
+
+```bash
+cd frontend
+npm run deploy
+```
+
+This will create a `gh-pages` branch with your built files. Then configure GitHub Pages to use the `gh-pages` branch.
+
+#### Option C: Automatic Deployment with GitHub Actions
 
 1. **Enable GitHub Actions**:
    - Go to your repository on GitHub
@@ -60,26 +95,13 @@ Visit http://localhost:3000 to test your portfolio locally.
    - Go to "Pages" in the left sidebar
    - Under "Source", select "GitHub Actions"
 
-2. **Push your changes**:
-   ```bash
-   git add .
-   git commit -m "Setup portfolio for GitHub Pages"
-   git push origin main
-   ```
-
-3. **Wait for deployment**: GitHub Actions will automatically build and deploy your site.
-
-#### Option B: Manual Deployment
-
-```bash
-npm run deploy
-```
+2. **Push your changes**: GitHub Actions will automatically build and deploy your site.
 
 ### 6. Access Your Portfolio
 
 Your portfolio will be available at:
 ```
-https://YourUsername.github.io/Portfolio
+https://simpnick.github.io/Portfolio
 ```
 
 ## 🔍 Verification Checklist
