@@ -8,7 +8,7 @@
 
 ## Professional Summary
 
-Passionate Full-Stack Developer with expertise in Python, JavaScript, and modern web technologies. Demonstrated experience in building scalable web applications, AI-powered systems, and automation tools. Strong background in machine learning, data analysis, and system integration with a focus on creating user-centric solutions.
+Passionate software developer with expertise in Python, JavaScript, and modern web technologies. Demonstrated experience in building scalable web applications, AI-powered systems, and automation tools. Strong background in machine learning, data analysis, and system integration with a focus on creating user-centric solutions.
 
 ---
 

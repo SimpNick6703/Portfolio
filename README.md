@@ -6,7 +6,7 @@ My personal portfolio website showcasing my full-stack development projects and 
 
 ## About Me
 
-I'm **SimpNick6703**, a passionate Full-Stack Developer with expertise in Python, JavaScript, and modern web technologies. I build scalable web applications, AI-powered systems, and automation tools with a focus on creating user-centric solutions.
+I'm **SimpNick6703**, a passionate software developer with expertise in Python, JavaScript, and modern web technologies. I build scalable web applications, AI-powered systems, and automation tools with a focus on creating user-centric solutions.
 
 **Contact Information:**
 - **Email**: [harshluhaa@gmail.com](mailto:harshluhaa@gmail.com)

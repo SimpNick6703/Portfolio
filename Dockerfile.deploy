@@ -1,0 +1,43 @@
+# Dockerfile for GitHub Pages deployment
+# This builds the React app and outputs it to /docs folder for GitHub Pages
+
+FROM node:20-alpine AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY frontend/package*.json ./
+
+# Install dependencies
+RUN npm install --omit=dev
+
+# Copy source code
+COPY frontend/ ./
+
+# Build the React application
+RUN npm run build
+
+# Create a minimal image to extract the build
+FROM alpine:latest
+
+# Install required tools
+RUN apk add --no-cache bash
+
+# Copy built files from builder stage
+COPY --from=builder /app/build /build
+
+# Create docs directory
+RUN mkdir -p /docs
+
+# Copy build output to docs directory
+RUN cp -r /build/* /docs/
+
+# Create .nojekyll file to prevent GitHub Pages Jekyll processing
+RUN touch /docs/.nojekyll
+
+# List contents for verification
+RUN echo "Contents of /docs:" && ls -la /docs/
+
+# Default command to copy docs to output volume
+CMD ["sh", "-c", "cp -r /docs/* /output/ && echo 'Build output copied to /output directory'"]

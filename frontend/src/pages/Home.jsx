@@ -7,11 +7,10 @@ const Home = () => {
       {/* Hero Section */}
       <div className="text-center py-16 max-w-4xl bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 rounded-3xl shadow-2xl mx-4">
         <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl">
-          <span className="block bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">Hi, I'm Harsh Luha</span>
-          <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">Full Stack Developer</span>
+          <span className="block bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">Hi, I'm SimpNick</span>
         </h1>
         <p className="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-          Passionate Full-Stack Developer with expertise in Python, JavaScript, and modern web technologies. 
+          Passionate software developer with expertise in Python, JavaScript, and modern web technologies. 
           I build scalable web applications, AI-powered systems, and automation tools with a focus on creating user-centric solutions.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4 px-4">
