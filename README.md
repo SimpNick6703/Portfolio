@@ -25,9 +25,7 @@ A full-stack portfolio application built with FastAPI (backend) and React (front
    - Source: **"GitHub Actions"**
 4. **Commit your changes** - GitHub automatically builds and deploys!
 
-**That's it!** Your portfolio will be live at `https://YourUsername.github.io/Portfolio`
-
-**📖 Detailed Guide**: See `GITHUB_PAGES_SETUP.md` for step-by-step instructions.
+**That's it!** Your portfolio will be live at `https://YourUsername.github.io/`
 
 ### 🐳 Option 2: Docker (Full-Stack Development)
 
@@ -102,7 +100,7 @@ Update the following files with your GitHub username:
 
 3. **frontend/package.json**:
    ```json
-   "homepage": "https://YourUsername.github.io/Portfolio"
+   "homepage": "https://YourUsername.github.io/"
    ```
 
 ## API Integration
