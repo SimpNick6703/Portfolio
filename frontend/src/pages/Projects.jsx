@@ -10,13 +10,27 @@ const Projects = () => {
   useEffect(() => {
     const fetchRepositories = async () => {
       try {
+        console.log('Fetching repositories...');
+        console.log('Environment:', {
+          NODE_ENV: process.env.NODE_ENV,
+          REACT_APP_USE_LOCAL_API: process.env.REACT_APP_USE_LOCAL_API,
+          REACT_APP_API_URL: process.env.REACT_APP_API_URL
+        });
+        
         const repos = await githubService.getRepositories();
+        console.log('Successfully fetched repositories:', repos.length);
         setRepos(repos);
         setLoading(false);
       } catch (err) {
-        setError('Failed to fetch repositories');
-        setLoading(false);
         console.error('Error fetching repositories:', err);
+        console.error('Error details:', {
+          message: err.message,
+          status: err.response?.status,
+          statusText: err.response?.statusText,
+          data: err.response?.data
+        });
+        setError(`Failed to fetch repositories: ${err.message}`);
+        setLoading(false);
       }
     };
 

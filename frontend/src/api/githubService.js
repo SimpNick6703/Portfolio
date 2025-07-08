@@ -11,31 +11,12 @@ export const githubService = {
       if (isDevelopment && useLocalAPI) {
         // Use local FastAPI backend in development
         console.log('Attempting to fetch from local API:', process.env.REACT_APP_API_URL);
-        try {
-          const response = await api.get('/api/repos');
-          console.log('Local API success:', response.data);
-          return response.data;
-        } catch (localError) {
-          console.warn('Local API failed, falling back to GitHub API:', localError.message);
-          // Fallback to GitHub API if local API fails
-          const githubApi = axios.create({
-            baseURL: 'https://api.github.com',
-            timeout: 10000,
-            headers: {
-              'Accept': 'application/vnd.github.v3+json',
-            }
-          });
-          const response = await githubApi.get(`/users/${USERNAME}/repos`, {
-            params: {
-              sort: 'updated',
-              per_page: 100,
-              type: 'public'
-            }
-          });
-          return response.data;
-        }
+        const response = await api.get('/api/repos');
+        console.log('Local API success:', response.data);
+        return response.data;
       } else {
         // Use GitHub API directly for production/GitHub Pages
+        console.log('Fetching from GitHub API directly');
         const response = await api.get(`/users/${USERNAME}/repos`, {
           params: {
             sort: 'updated',
@@ -43,10 +24,11 @@ export const githubService = {
             type: 'public'
           }
         });
+        console.log('GitHub API success:', response.data);
         return response.data;
       }
     } catch (error) {
-      console.error('Error fetching repositories:', error);
+      console.error('Error in getRepositories:', error);
       throw error;
     }
   },
