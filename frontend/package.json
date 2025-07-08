@@ -2,7 +2,7 @@
   "name": "portfolio-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://SimpNick6703.github.io/Portfolio",
+  "homepage": "https://simpnick6703.github.io",
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "axios": "^1.4.0",
