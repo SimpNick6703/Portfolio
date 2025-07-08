@@ -12,48 +12,22 @@ A full-stack portfolio application built with FastAPI (backend) and React (front
 
 ## Deployment Options
 
-### 🚀 Option 1: GitHub Pages (Recommended for Static Hosting)
+### 🚀 Option 1: GitHub Pages - Zero Local Setup Required! (Recommended)
 
-#### Option 1A: Deploy from Main Branch (Simplest)
+**Perfect if you don't have Node.js/npm installed locally**
 
-1. **Fork/Clone this repository to your GitHub account**
-2. **Update the username in the code**:
-   ```javascript
-   // In frontend/src/api/githubService.js, change:
-   const USERNAME = 'SimpNick6703'; // Replace with your GitHub username
-   ```
-3. **Update the homepage URL in package.json**:
-   ```json
-   "homepage": "https://YourUsername.github.io/Portfolio"
-   ```
-4. **Build and deploy**:
-   ```bash
-   # Run the deployment script
-   ./deploy-main-branch.sh    # Linux/Mac
-   # OR
-   deploy-main-branch.bat     # Windows
-   ```
-5. **Configure GitHub Pages**:
-   - Go to Settings > Pages
-   - Source: Deploy from a branch
-   - Branch: main, Folder: / (root)
+1. **Fork this repository** on GitHub
+2. **Edit configuration files** (directly on GitHub or locally):
+   - Update GitHub username in `frontend/src/api/githubService.js`
+   - Update homepage URL in `frontend/package.json`
+3. **Configure GitHub Pages**:
+   - Go to repository Settings → Pages
+   - Source: **"GitHub Actions"**
+4. **Commit your changes** - GitHub automatically builds and deploys!
 
-#### Option 1B: Deploy using gh-pages branch
+**That's it!** Your portfolio will be live at `https://YourUsername.github.io/Portfolio`
 
-```bash
-cd frontend
-npm install
-npm run build
-npm run deploy
-```
-Then configure GitHub Pages to use the `gh-pages` branch.
-
-#### Option 1C: Automatic Deployment with GitHub Actions
-
-1. **Enable GitHub Pages**:
-   - Go to Settings > Pages
-   - Source: GitHub Actions
-2. **Push to main branch** - GitHub Actions will automatically build and deploy
+**📖 Detailed Guide**: See `GITHUB_PAGES_SETUP.md` for step-by-step instructions.
 
 ### 🐳 Option 2: Docker (Full-Stack Development)
 
