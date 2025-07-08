@@ -1,6 +1,6 @@
 # SimpNick6703's Portfolio
 
-My personal portfolio website showcasing my full-stack development projects and technical skills. Built with React (frontend) and FastAPI (backend), featuring modern gradient designs and automated deployment to GitHub Pages.
+My personal portfolio website showcasing my software development projects and technical skills. Built with React (frontend) and FastAPI (backend), featuring modern gradient designs and _automated_ deployment to GitHub Pages.
 
 **Live Site**: [https://simpnick6703.github.io/Portfolio/](https://simpnick6703.github.io/Portfolio/)
 
@@ -137,7 +137,9 @@ Portfolio/
 │   ├── public/                 # Static assets
 │   ├── package.json           # Node.js dependencies
 │   └── Dockerfile            # Frontend containerization
-└── docker-compose.yml          # Local development orchestration
+├── docs/                         # GitHub Pages deployment folder
+├── docker-compose.yml          # Local development orchestration
+└── Dockerfile.deploy           # GitHub Pages build automation
 ```
 
 ## Configuration
@@ -173,10 +175,13 @@ This portfolio is deployed to GitHub Pages using the `/docs` folder deployment m
 ### To Deploy Updates
 
 1. Make changes to the source code in the `frontend/` directory
-2. Build the React app:
+2. Build and deploy using Docker:
    ```bash
-   cd frontend
-   npm run build
+   # Build the deployment image
+   docker build -f Dockerfile.deploy -t portfolio-deploy .
+   
+   # Extract build to docs folder
+   docker run --rm -v "${PWD}/docs:/output" portfolio-deploy
    ```
 3. Commit and push the changes:
    ```bash
@@ -192,5 +197,3 @@ The site will be automatically updated on GitHub Pages.
 This portfolio is a personal project showcasing my work and skills. Feel free to explore the code for inspiration, but please respect that this represents my personal brand and professional identity.
 
 ---
-
-*Built with love by SimpNick6703 using React, FastAPI, and modern web technologies.*
