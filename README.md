@@ -160,6 +160,33 @@ Portfolio/
 - **SEO Optimized** - Meta tags and structured data
 - **Auto Deploy** - Zero-touch deployment via GitHub Actions
 
+## Deployment
+
+This portfolio is deployed to GitHub Pages using the `/docs` folder deployment method. The site is automatically updated when changes are pushed to the main branch.
+
+### GitHub Pages Setup
+
+1. **Repository Settings**: The site is deployed from the `/docs` folder on the main branch
+2. **Build Process**: The React app is built and moved to the `/docs` folder for deployment
+3. **Live URL**: [https://simpnick6703.github.io/Portfolio/](https://simpnick6703.github.io/Portfolio/)
+
+### To Deploy Updates
+
+1. Make changes to the source code in the `frontend/` directory
+2. Build the React app:
+   ```bash
+   cd frontend
+   npm run build
+   ```
+3. Commit and push the changes:
+   ```bash
+   git add docs/
+   git commit -m "Deploy: Update docs folder with latest build"
+   git push origin main
+   ```
+
+The site will be automatically updated on GitHub Pages.
+
 ## License
 
 This portfolio is a personal project showcasing my work and skills. Feel free to explore the code for inspiration, but please respect that this represents my personal brand and professional identity.

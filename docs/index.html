@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - SimpNick6703</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .steps {
+            margin-top: 30px;
+        }
+        .steps ol {
+            padding-left: 20px;
+        }
+        .steps li {
+            margin-bottom: 10px;
+        }
+        .code {
+            background: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Portfolio Deployment Setup</h1>
+        
+        <div class="info">
+            <p><strong>Status:</strong> GitHub Pages deployment from <span class="code">/docs</span> folder is ready!</p>
+            <p>This placeholder page will be replaced with your built React application.</p>
+        </div>
+        
+        <div class="steps">
+            <h2>Next Steps:</h2>
+            <ol>
+                <li>Run <span class="code">npm run build</span> in the <span class="code">frontend/</span> directory</li>
+                <li>The build output will be automatically moved to the <span class="code">docs/</span> folder</li>
+                <li>Commit and push the changes</li>
+                <li>Go to your GitHub repository settings</li>
+                <li>Navigate to "Pages" section</li>
+                <li>Set source to "Deploy from a branch"</li>
+                <li>Select branch: <span class="code">main</span></li>
+                <li>Select folder: <span class="code">/docs</span></li>
+                <li>Click "Save"</li>
+            </ol>
+        </div>
+        
+        <div class="info" style="margin-top: 30px;">
+            <p><strong>Note:</strong> This setup allows you to deploy your React portfolio to GitHub Pages while keeping your README.md visible in the repository root.</p>
+        </div>
+    </div>
+</body>
+</html>

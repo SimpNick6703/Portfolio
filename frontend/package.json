@@ -13,11 +13,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && node scripts/move-to-docs.js",
+    "build:docs": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d ../docs"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +42,7 @@
     "autoprefixer": "^10.4.14",
     "gh-pages": "^6.1.0",
     "postcss": "^8.4.23",
+    "rimraf": "^5.0.5",
     "tailwindcss": "^3.3.2"
   }
 }
