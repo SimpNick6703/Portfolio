@@ -42,5 +42,14 @@ If your GitHub username is `johnsmith`, then:
 ## Need Help?
 
 - **Build fails**: Check the "Actions" tab in your repository for error details
-- **Portfolio doesn't load**: Wait 5-10 minutes, GitHub Pages takes time to activate
+- **Portfolio doesn't load**: Wait 5-10 minutes, GitHub Pages takes time to activate  
 - **No projects showing**: Make sure you have public repositories on GitHub
+- **Detailed troubleshooting**: See `TROUBLESHOOTING.md` for complete debugging guide
+
+## 🔧 If Build Keeps Failing
+
+1. **Check the Actions tab** in your repository for error details
+2. **Make sure repository is public** (required for free GitHub Pages)
+3. **Verify GitHub Pages source is set to "GitHub Actions"**
+4. **Double-check your username spelling** in both configuration files
+5. **See TROUBLESHOOTING.md** for detailed debugging steps
