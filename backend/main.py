@@ -3,14 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 import httpx
 import os
 from typing import List, Optional, Dict, Any
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
-app = FastAPI(title="Portfolio API")
+app = FastAPI(title="Portfolio API", version="1.0.0")
 
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For production, specify your frontend URL
+    allow_origins=["http://localhost:3000", "http://frontend:3000"],  # Frontend URLs
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,7 +25,7 @@ class Repository(BaseModel):
     stargazers_count: int
     forks_count: int
     language: Optional[str] = None
-    topics: List[str] = []
+    topics: List[str] = Field(default_factory=list)
     updated_at: str
 
 @app.get("/")

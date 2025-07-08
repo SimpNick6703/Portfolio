@@ -13,3 +13,5 @@ README.md
 .eslintcache
 .vscode
 .idea
+# Keep .env.docker for container builds
+!.env.docker

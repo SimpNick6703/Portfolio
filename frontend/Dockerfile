@@ -13,11 +13,11 @@ RUN npm install
 # Copy application code
 COPY . .
 
-# Build the application
-RUN npm run build
+# Copy Docker-specific environment file
+COPY .env.docker .env
 
 # Expose port
 EXPOSE 3000
 
-# Command to run the application
+# Command to run the application in development mode
 CMD ["npm", "start"]
