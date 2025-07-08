@@ -2,7 +2,7 @@
 
 My personal portfolio website showcasing my full-stack development projects and technical skills. Built with React (frontend) and FastAPI (backend), featuring modern gradient designs and automated deployment to GitHub Pages.
 
-**Live Site**: [https://simpnick6703.github.io/](https://simpnick6703.github.io/)
+**Live Site**: [https://simpnick6703.github.io/Portfolio/](https://simpnick6703.github.io/Portfolio/)
 
 ## About Me
 
