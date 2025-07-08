@@ -1,7 +1,6 @@
-# Harsh Luha
+# SimpNick6703
 
 **📧 Email:** [harshluhaa@gmail.com](mailto:harshluhaa@gmail.com)  
-**📱 Phone:** +91 82600 21347  
 **🔗 GitHub:** [github.com/SimpNick6703](https://github.com/SimpNick6703)  
 **💼 LinkedIn:** [linkedin.com/in/harshluha](https://www.linkedin.com/in/harshluha)
 
