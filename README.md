@@ -1,206 +1,169 @@
-# Portfolio Application
+# SimpNick6703's Portfolio
 
-A full-stack portfolio application built with FastAPI (backend) and React (frontend), showcasing GitHub repositories. Supports both local development with FastAPI backend and static deployment to GitHub Pages.
+My personal portfolio website showcasing my full-stack development projects and technical skills. Built with React (frontend) and FastAPI (backend), featuring modern gradient designs and automated deployment to GitHub Pages.
 
-## Features
+**Live Site**: [https://simpnick6703.github.io/](https://simpnick6703.github.io/)
 
-- **Backend**: FastAPI-based REST API that fetches GitHub repository data (for local development)
-- **Frontend**: React application with Tailwind CSS for a modern, responsive UI
-- **GitHub Pages Support**: Static deployment using GitHub API directly
-- **Dockerized**: Complete Docker setup for local development
-- **Dual API Support**: Works with local FastAPI backend or GitHub API directly
+## About Me
 
-## Deployment Options
+I'm **SimpNick6703**, a passionate Full-Stack Developer with expertise in Python, JavaScript, and modern web technologies. I build scalable web applications, AI-powered systems, and automation tools with a focus on creating user-centric solutions.
 
-### 🚀 Option 1: GitHub Pages - Zero Local Setup Required! (Recommended)
+**Contact Information:**
+- **Email**: [harshluhaa@gmail.com](mailto:harshluhaa@gmail.com)
+- **GitHub**: [github.com/SimpNick6703](https://github.com/SimpNick6703)
+- **LinkedIn**: [linkedin.com/in/harshluha](https://linkedin.com/in/harshluha)
 
-**Perfect if you don't have Node.js/npm installed locally**
+## Featured Projects
 
-1. **Fork this repository** on GitHub
-2. **Edit configuration files** (directly on GitHub or locally):
-   - Update GitHub username in `frontend/src/api/githubService.js`
-   - Update homepage URL in `frontend/package.json`
-3. **Configure GitHub Pages**:
-   - Go to repository Settings → Pages
-   - Source: **"GitHub Actions"**
-4. **Commit your changes** - GitHub automatically builds and deploys!
+### TalentScout - AI-Powered Hiring Assistant
+*Python, Flask, OpenAI API, Machine Learning*
+- AI-powered conversational hiring assistant that automates technical interviews
+- Structured interview phases with progressive assessment and natural conversation flow
+- Responsive web interface with automatic theme switching and data export capabilities
 
-**That's it!** Your portfolio will be live at `https://YourUsername.github.io/`
+### Splitwise Clone - Expense Tracking Application
+*React, FastAPI, PostgreSQL, Docker*
+- Full-stack expense tracking with comprehensive group expense management
+- Multiple split types (equal/percentage) with automated balance calculations
+- Responsive UI with dark/light theme support and Docker containerization
 
-### 🐳 Option 2: Docker (Full-Stack Development)
+### Disgram - Telegram to Discord Bridge
+*Python, Web Scraping, API Integration*
+- Automated message forwarding system with robust web scraping and rate limiting
+- Multi-process architecture for handling multiple channels simultaneously
+- Comprehensive logging system with various media format support
 
-#### Prerequisites
+### Transport Company Management System
+*Flask, SQLAlchemy, Bootstrap, JavaScript*
+- Complete vehicle rental operations management with CRUD operations
+- Intuitive dashboard with key metrics and system status monitoring
+- Responsive Bootstrap interface with interactive JavaScript features
 
-- Docker
-- Docker Compose
+## Technical Skills
 
-#### Running the Application
+**Programming Languages:** Python, JavaScript, HTML, CSS, SQL  
+**Frontend:** React, TailwindCSS, Bootstrap, Responsive Design  
+**Backend:** Flask, FastAPI, SQLAlchemy, RESTful APIs  
+**Databases:** PostgreSQL, SQLite  
+**AI/ML:** Machine Learning, Data Analysis, NLP, OpenAI API  
+**DevOps:** Docker, Git, GitHub Actions, WebSockets  
+**Security:** Cryptography, Fernet Encryption, Authentication Systems
 
-1. **Clone and navigate to the project directory**:
-   ```bash
-   cd Portfolio
-   ```
+## Education
 
-2. **Build and run with Docker Compose**:
-   ```bash
-   docker-compose up --build
-   ```
+**B.Tech in Computer Science and Engineering**  
+National Institute of Technology, Rourkela (2020 - 2024)  
+Rourkela, Odisha, India
 
-3. **Access the application**:
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:8000
-   - API Documentation: http://localhost:8000/docs
+## Development Setup
 
-### 💻 Option 3: Local Development
+This portfolio supports multiple development modes for different use cases:
 
-#### Backend (FastAPI)
+### Production (GitHub Pages)
+Automatically deployed via GitHub Actions on every push to main branch.
+- **Zero local setup required** - builds and deploys in the cloud
+- Uses GitHub API directly for repository data
+- Fully static deployment with modern gradient styling
 
+### Local Development (Docker)
+For full-stack development with FastAPI backend:
+
+```bash
+# Clone and run with Docker Compose
+git clone https://github.com/SimpNick6703/Portfolio.git
+cd Portfolio
+docker-compose up --build
+
+# Access points:
+# Frontend: http://localhost:3000
+# Backend API: http://localhost:8000
+# API Documentation: http://localhost:8000/docs
+```
+
+### Manual Development
+For individual component development:
+
+**Backend (FastAPI):**
 ```bash
 cd backend
 pip install -r requirements.txt
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-#### Frontend (React)
-
+**Frontend (React):**
 ```bash
 cd frontend
 npm install
 npm start
 ```
 
-## Configuration
+## Project Architecture
 
-### Environment Variables
+### Frontend Features
+- **Modern React Application** with functional components and hooks
+- **Gradient Design System** with blue-to-purple color schemes
+- **Responsive Layout** optimized for all screen sizes
+- **Dark/Light Mode** support with system preference detection
+- **GitHub API Integration** for dynamic repository data
+- **Performance Optimized** with lazy loading and efficient rendering
 
-#### Development (.env)
-```
-REACT_APP_API_URL=http://localhost:8000
-REACT_APP_USE_LOCAL_API=true
-```
+### Backend Features (Local Development)
+- **FastAPI REST API** with automatic OpenAPI documentation
+- **CORS Support** for frontend integration
+- **GitHub API Proxy** with rate limiting and caching
+- **Health Check Endpoints** for monitoring
+- **Docker Containerization** for consistent environments
 
-#### Production (.env.production)
-```
-REACT_APP_USE_LOCAL_API=false
-```
+### Deployment Pipeline
+- **GitHub Actions** workflow for automated CI/CD
+- **Node.js Build Process** with dependency caching
+- **Static Site Generation** optimized for GitHub Pages
+- **Automatic Deployment** on main branch updates
 
-### GitHub Username Configuration
-
-Update the following files with your GitHub username:
-
-1. **frontend/src/api/githubService.js**:
-   ```javascript
-   const USERNAME = 'YourGitHubUsername';
-   ```
-
-2. **backend/main.py** (if using local backend):
-   ```python
-   username = "YourGitHubUsername"
-   ```
-
-3. **frontend/package.json**:
-   ```json
-   "homepage": "https://YourUsername.github.io/"
-   ```
-
-## API Integration
-
-The application supports two API modes:
-
-### Local Development Mode
-- Uses FastAPI backend running on localhost:8000
-- Set `REACT_APP_USE_LOCAL_API=true`
-- Provides custom API endpoints with CORS support
-
-### Production/GitHub Pages Mode
-- Uses GitHub API directly
-- Set `REACT_APP_USE_LOCAL_API=false`
-- No backend required, fully static deployment
-
-## GitHub Actions Workflow
-
-The included GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically:
-
-1. Installs Node.js dependencies
-2. Builds the React application
-3. Deploys to GitHub Pages
-4. Runs on every push to main/master branch
-
-## API Endpoints
-
-### Local FastAPI Backend
-- `GET /` - Health check
-- `GET /api/repos` - Get all repositories
-- `GET /api/repos/{repo_name}` - Get specific repository details
-
-### GitHub API (Production)
-- `GET /users/{username}/repos` - Get user repositories
-- `GET /repos/{username}/{repo}` - Get specific repository
-- `GET /repos/{username}/{repo}/languages` - Get repository languages
-- `GET /repos/{username}/{repo}/readme` - Get repository README
-
-## Project Structure
+## File Structure
 
 ```
 Portfolio/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # GitHub Actions deployment
-├── backend/
-│   ├── main.py                 # FastAPI application
-│   ├── requirements.txt        # Python dependencies
-│   ├── Dockerfile             # Backend Docker configuration
-│   └── .dockerignore          # Backend Docker ignore file
-├── frontend/
-│   ├── public/                # Static assets
+├── .github/workflows/deploy.yml   # Automated deployment pipeline
+├── backend/                       # FastAPI application
+│   ├── main.py                   # API endpoints and GitHub integration
+│   ├── requirements.txt          # Python dependencies
+│   └── Dockerfile               # Backend containerization
+├── frontend/                     # React application
 │   ├── src/
-│   │   ├── api/               # API configuration and services
-│   │   ├── components/        # React components
-│   │   └── pages/            # React pages
-│   ├── package.json          # Node.js dependencies
-│   ├── Dockerfile            # Frontend Docker configuration
-│   ├── .dockerignore         # Frontend Docker ignore file
-│   ├── .env                  # Development environment variables
-│   └── .env.production       # Production environment variables
-└── docker-compose.yml        # Docker Compose configuration
+│   │   ├── components/          # Reusable React components
+│   │   ├── pages/              # Main application pages
+│   │   └── api/                # GitHub API integration
+│   ├── public/                 # Static assets
+│   ├── package.json           # Node.js dependencies
+│   └── Dockerfile            # Frontend containerization
+└── docker-compose.yml          # Local development orchestration
 ```
 
-## Customization
-
-### Styling
-- Built with Tailwind CSS
-- Dark mode support included
-- Responsive design for all screen sizes
-
-### Content
-- Update `frontend/src/pages/About.jsx` with your information
-- Modify `frontend/src/pages/Home.jsx` for your introduction
-- Replace GitHub username in API service
-
-## Troubleshooting
-
-### GitHub Pages Issues
-1. **Repository not found**: Verify GitHub username in `githubService.js`
-2. **Page not loading**: Check GitHub Pages settings and ensure Actions are enabled
-3. **API rate limiting**: GitHub API has rate limits for unauthenticated requests
-
-### Local Development Issues
-1. **Port conflicts**: Make sure ports 3000 and 8000 are not in use
-2. **API connection issues**: Verify the `REACT_APP_API_URL` environment variable
-3. **Docker issues**: Try `docker-compose down` and `docker-compose up --build`
+## Configuration
 
 ### Environment Variables
-- For local development with backend: Set `REACT_APP_USE_LOCAL_API=true`
-- For GitHub Pages deployment: Set `REACT_APP_USE_LOCAL_API=false`
+- **Development**: Uses local FastAPI backend (`REACT_APP_USE_LOCAL_API=true`)
+- **Production**: Direct GitHub API integration (`REACT_APP_USE_LOCAL_API=false`)
 
-## Contributing
+### GitHub Integration
+- Repository data fetched via GitHub API
+- Rate limiting handled gracefully
+- Fallback content for API unavailability
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test both local and production modes
-5. Submit a pull request
+## Performance & Features
+
+- **Fast Loading** - Optimized React build with code splitting
+- **Mobile First** - Responsive design works on all devices
+- **Modern Design** - Beautiful gradients and smooth animations
+- **Accessible** - Semantic HTML and ARIA labels
+- **SEO Optimized** - Meta tags and structured data
+- **Auto Deploy** - Zero-touch deployment via GitHub Actions
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This portfolio is a personal project showcasing my work and skills. Feel free to explore the code for inspiration, but please respect that this represents my personal brand and professional identity.
+
+---
+
+*Built with love by SimpNick6703 using React, FastAPI, and modern web technologies.*
