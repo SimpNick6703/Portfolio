@@ -73,9 +73,9 @@ const Contact = () => {
               </div>
               <div className="ml-4 text-left">
                 <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Discord</p>
-                <span className="text-gray-900 dark:text-white text-lg">
+                <a href="https://discord.com/users/776818271013306370" target="_blank" rel="noopener noreferrer" className="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 text-lg">
                   simpnick
-                </span>
+                </a>
               </div>
             </div>
           </div>

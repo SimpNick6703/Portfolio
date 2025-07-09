@@ -7,9 +7,6 @@ const About = () => {
         <h1 className="text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent sm:text-4xl">
           About Me
         </h1>
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Passionate software developer with expertise in Python, JavaScript, and modern web technologies.
-        </p>
       </div>
 
       <div className="bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-900 shadow-xl overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700">
