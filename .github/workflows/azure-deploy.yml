@@ -1,0 +1,143 @@
+name: Deploy Portfolio to Azure
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+  AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+  AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+  AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
+  AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install azd
+      uses: Azure/setup-azd@v1.0.0
+
+    - name: Install Azure CLI
+      uses: azure/CLI@v2
+      with:
+        azcliversion: latest
+
+    - name: Log in with Azure (Federated Credentials)
+      if: ${{ env.AZURE_CLIENT_ID != '' }}
+      run: |
+        azd auth login \
+          --client-id "$AZURE_CLIENT_ID" \
+          --federated-credential-provider "github" \
+          --tenant-id "$AZURE_TENANT_ID"
+
+    - name: Log in with Azure (Client Credentials)
+      if: ${{ env.AZURE_CLIENT_ID == '' }}
+      run: |
+        azd auth login \
+          --client-id "$AZURE_CLIENT_ID" \
+          --client-secret "$AZURE_CLIENT_SECRET" \
+          --tenant-id "$AZURE_TENANT_ID"
+      env:
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+
+    - name: Azure Dev Provision
+      run: azd provision --no-prompt
+      env:
+        AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
+        AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
+        AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+    - name: Build and Push Container Images
+      run: |
+        # Get ACR name from azd environment
+        ACR_NAME=$(azd env get-values | grep AZURE_CONTAINER_REGISTRY_NAME | cut -d'=' -f2 | tr -d '"')
+        echo "Using ACR: $ACR_NAME"
+        
+        # Login to Azure Container Registry
+        az acr login --name $ACR_NAME
+        
+        # Build and push backend image
+        echo "Building backend image..."
+        docker build -t $ACR_NAME.azurecr.io/backend:${{ github.sha }} -t $ACR_NAME.azurecr.io/backend:latest ./backend
+        docker push $ACR_NAME.azurecr.io/backend:${{ github.sha }}
+        docker push $ACR_NAME.azurecr.io/backend:latest
+        
+        # Build and push frontend image
+        echo "Building frontend image..."
+        docker build -t $ACR_NAME.azurecr.io/frontend:${{ github.sha }} -t $ACR_NAME.azurecr.io/frontend:latest ./frontend
+        docker push $ACR_NAME.azurecr.io/frontend:${{ github.sha }}
+        docker push $ACR_NAME.azurecr.io/frontend:latest
+        
+        echo "Images built and pushed successfully!"
+
+    - name: Update Container Apps with New Images
+      run: |
+        # Get environment variables
+        ACR_NAME=$(azd env get-values | grep AZURE_CONTAINER_REGISTRY_NAME | cut -d'=' -f2 | tr -d '"')
+        RESOURCE_GROUP=$(azd env get-values | grep AZURE_RESOURCE_GROUP | cut -d'=' -f2 | tr -d '"')
+        BACKEND_APP=$(azd env get-values | grep AZURE_CONTAINER_APPS_ENVIRONMENT_NAME | cut -d'=' -f2 | tr -d '"' | sed 's/-env-/-backend-/')
+        FRONTEND_APP=$(azd env get-values | grep AZURE_CONTAINER_APPS_ENVIRONMENT_NAME | cut -d'=' -f2 | tr -d '"' | sed 's/-env-/-frontend-/')
+        
+        # Update backend container app
+        echo "Updating backend container app..."
+        az containerapp update \
+          --name $BACKEND_APP \
+          --resource-group $RESOURCE_GROUP \
+          --image $ACR_NAME.azurecr.io/backend:${{ github.sha }}
+        
+        # Update frontend container app
+        echo "Updating frontend container app..."
+        az containerapp update \
+          --name $FRONTEND_APP \
+          --resource-group $RESOURCE_GROUP \
+          --image $ACR_NAME.azurecr.io/frontend:${{ github.sha }}
+        
+        echo "Container apps updated successfully!"
+
+    - name: Azure Dev Deploy
+      run: azd deploy --no-prompt
+      env:
+        AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
+        AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
+        AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+    - name: Get Application URLs
+      run: |
+        echo "=== Deployment Complete ==="
+        FRONTEND_URL=$(azd env get-values | grep FRONTEND_URI | cut -d'=' -f2 | tr -d '"')
+        BACKEND_URL=$(azd env get-values | grep BACKEND_URI | cut -d'=' -f2 | tr -d '"')
+        
+        echo "🌐 Frontend URL: $FRONTEND_URL"
+        echo "🔗 Backend URL: $BACKEND_URL"
+        
+        echo "FRONTEND_URL=$FRONTEND_URL" >> $GITHUB_ENV
+        echo "BACKEND_URL=$BACKEND_URL" >> $GITHUB_ENV
+
+    - name: Comment PR with URLs
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `## 🚀 Deployment Complete!
+            
+            Your portfolio has been successfully deployed to Azure:
+            
+            - **Frontend**: ${{ env.FRONTEND_URL }}
+            - **Backend**: ${{ env.BACKEND_URL }}
+            
+            The deployment was triggered by commit: ${{ github.sha }}`
+          })
