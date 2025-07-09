@@ -62,25 +62,10 @@ htmlcov/
 # Testing
 .pytest_cache/
 
-# Azure deployment secrets and local files
-azure-secrets.json
-.azure/
-*.azd
-azd-env.json
-.env.azure
-.env.production
-
-# Azure CLI and AZD local state
-.azure-cli/
-.azuredatastudio/
-
 # Local configuration files that might contain secrets
 config.json
 secrets.json
 credentials.json
 local.settings.json
-
-# Temporary Azure files
-azure-pipelines/
 .vscode/settings.json
 .vscode/launch.json
